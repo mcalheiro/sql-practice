@@ -1,6 +1,9 @@
 # sql-practice
 My solutions for [SQL practice exercises](https://www.sql-practice.com/)
 
+<details>
+  <summary><b>Easy questions</b></summary>
+  
 **[Easy]** Show first name, last name, and gender of patients whose gender is 'M'
 ```sql
 SELECT first_name, last_name, gender
@@ -110,4 +113,210 @@ SELECT first_name, last_name, allergies
 FROM patients
 WHERE allergies NOT null and city is "Hamilton"
 ```
+</details>
+<details>
+  <summary><b>Medium questions</b></summary>
 
+**[Medium]** Show unique birth years from patients and order them by ascending.
+```sql
+SELECT DISTINCT(YEAR(birth_date)) 
+FROM patients
+ORDER BY birth_date ASC
+```
+
+**[Medium]** Show unique first names from the patients table which only occurs once in the list. *For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.*
+```sql
+SELECT first_name
+FROM patients
+GROUP BY first_name
+HAVING COUNT(*) = 1
+```
+
+**[Medium]** Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+```sql
+SELECT patient_id, first_name
+FROM patients
+WHERE first_name LIKE "s%s" AND LEN(first_name) >= 6
+```
+
+**[Medium]** Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'. **Primary diagnosis is stored in the admissions table.**
+```sql
+SELECT patients.patient_id, patients.first_name, patients.last_name
+FROM patients
+JOIN admissions
+ON patients.patient_id = admissions.patient_id
+WHERE diagnosis IS 'Dementia'
+
+```
+
+**[Medium]** Display every patient's first_name. Order the list by the length of each name and then by alphabetically.
+```sql
+SELECT first_name
+FROM patients
+ORDER BY LEN(first_name), first_name ASC
+```
+
+**[Medium]** Show the total amount of male patients and the total amount of female patients in the patients table. Display the two results in the same row. 
+```sql
+SELECT
+(SELECT COUNT(*) FROM patients WHERE gender IS 'M') AS male_count,
+(SELECT COUNT(*) FROM patients WHERE gender IS 'F') AS female_count;
+```
+
+**[Medium]** 
+```sql
+
+```
+
+**[Medium]** 
+```sql
+
+```
+
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+
+**[Medium]** 
+```sql
+
+```
+
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+**[Medium]** 
+```sql
+
+```
+</details>
+<details>
+  <summary><b>Hard questions</b></summary>
+  
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+**[Hard]** 
+```sql
+
+```
+</details>
